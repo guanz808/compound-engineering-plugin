@@ -1,13 +1,13 @@
 {
-  "name": "my-ce",
+  "name": "ce",
   "owner": {
     "name": "local"
   },
   "plugins": [
     {
-      "name": "my-ce",
+      "name": "ce",
       "description": "Personal compound engineering plugin — ideate, analyze, brainstorm, plan, work, debug, review, triage, and compound knowledge. No external services.",
-      "source": "./my-ce",
+      "source": ".",
       "category": "development"
     }
   ]

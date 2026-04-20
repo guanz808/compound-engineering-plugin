@@ -8,15 +8,21 @@
 
 ## What this project is
 
-<!-- One sentence description -->
+compound-engineering-plugin — a Claude Code plugin that implements a compound engineering workflow (ideate → analyze → brainstorm → plan → work → debug → review → triage → compound). Skills are plain markdown files in `skills/`. No external services.
 
 ## Stack
 
-<!-- Languages, frameworks, key libraries -->
+- Claude Code plugin (`.claude-plugin/plugin.json`)
+- Skills: plain markdown (`skills/ce-*/SKILL.md`)
+- No build system, no dependencies, no runtime
 
 ## Conventions
 
-<!-- How code should be written here — naming, structure, patterns you care about -->
+- Skill files use YAML frontmatter (`name`, `description`) followed by markdown phases
+- Each skill follows a numbered Phase structure with a Rules section at the end
+- Filenames for generated docs: `YYYY-MM-DD-<slug>.md` (kebab-case, 3–5 words)
+- All user-facing output is written to `docs/` or `todos/` — never modify project files silently
+- Always show proposals before writing; never auto-write without explicit user approval
 
 ## Patterns that work well
 
@@ -28,13 +34,16 @@
 
 ## Architecture decisions
 
-<!-- Key decisions so future sessions don't relitigate them -->
-<!-- Format: Decision | Chose X over Y | Because: reason | Date: YYYY-MM-DD -->
+| Decision | Chose | Over | Because | Date |
+|---|---|---|---|---|
+| Plugin structure | Single root install | Nested `my-ce/` subfolder | Eliminates duplicate files; `claude /plugin install --dir .` works from root | 2026-04-19 |
+| Skill format | Plain markdown phases | Code/scripts | Skills are instructions to Claude, not executable code — markdown keeps them editable and transparent | — |
 
 ## Review standards
 
-<!-- What P1/P2/P3 means for this project -->
-<!-- Any specific security, performance, or correctness concerns -->
+- P1: Skill produces incorrect output, writes files without approval, or breaks the compound loop
+- P2: Inconsistent phase structure, missing Rules section, unclear acceptance criteria in tasks
+- P3: Wording improvements, minor formatting
 
 ## Open questions
 

@@ -1,4 +1,4 @@
-# my-ce — Personal Compound Engineering Plugin
+# compound-engineering-plugin
 
 A lean Claude Code plugin for planning, reviewing, and building up personal engineering knowledge over time.
 No external services. No MCP servers. No multi-agent orchestration. Just Claude.
@@ -7,18 +7,28 @@ No external services. No MCP servers. No multi-agent orchestration. Just Claude.
 
 ## Install
 
-```bash
-claude /plugin install --dir ./my-ce-plugin
+```
+/plugin install --dir .
 ```
 
-Then copy `CLAUDE.md` from this folder into your project root and fill in the top section.
+## Update
+
+```
+/plugin marketplace update local
+```
+
+## Remove
+
+```
+/plugin uninstall ce@local
+```
 
 ---
 
 ## The loop
 
 ```
-brainstorm → plan → (write code) → review → triage → compound → repeat
+ideate → analyze → brainstorm → plan → (write code) → debug → review → triage → compound → repeat
 ```
 
 | Command | What it does |
@@ -42,10 +52,13 @@ CLAUDE.md                        ← read every session; your patterns accumulat
 docs/
 ├── brainstorms/                 ← one file per brainstorm session
 ├── plans/                       ← one file per plan
+├── analysis/                    ← one file per /ce:analyze session
 └── solutions/                   ← searchable solved-problem docs (YAML frontmatter)
     ├── auth/
     ├── data/
+    ├── frontend/
     ├── testing/
+    ├── infra/
     └── other/
 todos/
 ├── 001-ready-p1-<slug>.md       ← review findings, worked through with /ce:triage
@@ -87,7 +100,7 @@ skills/
 ├── ce-review/SKILL.md        ← security, performance, architecture, language review
 ├── ce-triage/SKILL.md        ← step through findings one at a time
 └── ce-compound/SKILL.md      ← extract learnings into CLAUDE.md
-CLAUDE.md                     ← your project context (copy into every project)
+CLAUDE.md                     ← your project context (create one per project with /init)
 ```
 
 Re-run the install command after any edits to reload.

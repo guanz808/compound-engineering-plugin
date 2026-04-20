@@ -1,6 +1,0 @@
-{
-  "name": "my-ce",
-  "version": "3.1.0",
-  "description": "Personal compound engineering plugin. Plan, analyze, build, review, and compound knowledge. All local, no external services.",
-  "skills": "./skills"
-}
